@@ -1,0 +1,55 @@
+# templates
+/templates/*/_packages/*
+
+# var
+/var/backup/*
+!/var/backup/.gitmodule
+/var/cache/smarty/*
+!/var/cache/smarty/.gitmodule
+/var/cache/master/*
+!/var/cache/master/.gitmodule
+/var/download/*
+!/var/download/.gitmodule
+/var/log/*
+!/var/log/.gitmodule
+/var/temp/csv/*
+!/var/temp/csv/.gitmodule
+/var/temp/download/*
+!/var/temp/download/.gitmodule
+/var/temp/plugin_install/*
+!/var/temp/plugin_install/.gitmodule
+/var/temp/plugin_update/*
+!/var/temp/plugin_update/.gitmodule
+/var/temp/zip/*
+!/var/temp/zip/.gitmodule
+/var/zip/*
+!/var/zip/.gitmodule
+
+# module
+/module/*
+!/module/.gitmodule
+
+# plugin
+/plugin/*
+!/plugin/.gitmodule
+
+# html
+/html/install/temp/*
+!/html/install/temp/.gitmodule
+/html/upload/save_image/*
+!/html/upload/save_image/.gitmodule
+/html/upload/temp_image/*
+!/html/upload/temp_image/.gitmodule
+/html/upload/temp_plugin/*
+!/html/upload/temp_plugin/.gitmodule
+/html/upload/temp_template/*
+!/html/upload/temp_template/.gitmodule
+/html/upload/mobile_image/*
+!/html/upload/mobile_image/.gitmodule
+
+# other
+/vendor/*
+.env
+.DS_Store
+.php-version
+!.gitmodule

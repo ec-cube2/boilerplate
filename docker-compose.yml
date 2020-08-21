@@ -1,0 +1,58 @@
+version: '3'
+services:
+  web:
+    image: eccube2/nginx:latest
+    volumes:
+      - ".:/var/www/app:ro"
+    depends_on:
+      - app
+    ports:
+      - "8080:80"
+    environment:
+      TZ: Asia/Tokyo
+      NGINX_ROOT: /var/www/app/html
+      FASTCGI_PASS: app:9000
+  app:
+    image: eccube2/php:5.6-fpm
+    volumes:
+      - ".:/var/www/app:delegated"
+    depends_on:
+      - mysql
+    environment:
+      TZ: Asia/Tokyo
+      PHP_POST_MAX_SIZE: 10M
+      PHP_UPLOAD_MAX_FILESIZE: 10M
+      PHP_LOG_ERRORS: "On"
+      PHP_ERROR_REPORTING: "E_ALL"
+      PHP_ERROR_LOG: "/proc/self/fd/2"
+      # EC-CUBE2 Config
+      HTTP_URL: http://localhost:8080/
+      HTTPS_URL: http://localhost:8080/
+      ROOT_URLPATH: /
+      DOMAIN_NAME: ~
+      DB_TYPE: mysql
+      DB_USER: eccube2
+      DB_PASSWORD: password
+      DB_SERVER: mysql
+      DB_NAME: eccube2
+      DB_PORT: ~
+      ADMIN_DIR: admin/
+      ADMIN_FORCE_SSL: 'false'
+      ADMIN_ALLOW_HOSTS: 'a:0:{}'
+      AUTH_MAGIC: 
+      PASSWORD_HASH_ALGOS: sha256
+      MAIL_BACKEND: smtp
+      SMTP_HOST: ~
+      SMTP_PORT: ~
+      SMTP_USER: ~
+      SMTP_PASSWORD: ~
+  mysql:
+    image: mysql:5.6
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: eccube2
+      MYSQL_USER: eccube2
+      MYSQL_PASSWORD: password

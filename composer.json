@@ -1,0 +1,35 @@
+{
+    "name": "ec-cube2/boilerplate",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "ec-cube2/cli": "^1.2",
+        "ec-cube2/ec-cube2": "~2.13.5",
+        "oscarotero/env": "^1.2",
+        "vlucas/phpdotenv": "^2.0.1"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "include-path": [
+        "config/"
+    ],
+    "extra": {
+        "installer-paths": {
+            "plugin/{$name}/": ["type:eccube2-plugin"],
+            "module/{$name}/": ["type:eccube2-module"],
+            "templates/{$name}/": ["type:eccube2-template"]
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "cp -R ./vendor/ec-cube2/ec-cube2/data/Smarty/templates ./",
+            "cp -R ./vendor/ec-cube2/ec-cube2/data/class_extends ./src/",
+            "mv ./html/define.php ./",
+            "cp -R ./vendor/ec-cube2/ec-cube2/html ./",
+            "rm -r ./html/install",
+            "mv ./define.php html/",
+            "cp ./vendor/ec-cube2/ec-cube2/data/downloads/KEN_ALL.CSV ./var/zip/"
+        ]
+    }
+}
