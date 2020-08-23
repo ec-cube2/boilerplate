@@ -1,6 +1,5 @@
 # templates
-/templates/*
-!/templates/.gitmodule
+/templates/*/_packages/*
 
 # var
 /var/backup/*
@@ -35,16 +34,21 @@
 !/plugin/.gitmodule
 
 # html
-/html/*
-!/html/define.php
-
-# src
-/src/*
-!/src/.gitmodule
+/html/install/temp/*
+!/html/install/temp/.gitmodule
+/html/upload/save_image/*
+!/html/upload/save_image/.gitmodule
+/html/upload/temp_image/*
+!/html/upload/temp_image/.gitmodule
+/html/upload/temp_plugin/*
+!/html/upload/temp_plugin/.gitmodule
+/html/upload/temp_template/*
+!/html/upload/temp_template/.gitmodule
+/html/upload/mobile_image/*
+!/html/upload/mobile_image/.gitmodule
 
 # other
 /vendor/*
-/composer.lock
 .env
 .DS_Store
 .php-version

@@ -33,7 +33,7 @@ Dockerで実行するには以下を実行してください。
 ```sh
 mkdir PROJECT_NAME
 cd PROJECT_NAME
-docker run --rm -it --volume="$PWD:/var/www/app" eccube2/php:5.6-fpm composer create-project ec-cube2/boilerplate .
+docker run --rm -it --volume=".:/var/www/app" composer create-project ec-cube2/boilerplate .
 ```
 
 
@@ -44,31 +44,38 @@ docker run --rm -it --volume="$PWD:/var/www/app" eccube2/php:5.6-fpm composer cr
 設定は .env を設定するか、本番・Dockerなどでは環境変数で指定しましょう。  
 以下の項目を設定します。
 
-| 設定値 | デフォルト | Dockerデフォルト |
-| --- | --- | --- |
-| HTTP_URL |  | http://localhost:8080/ |
-| HTTPS_URL |  | http://localhost:8080/ |
-| ROOT_URLPATH | / | / |
-| DOMAIN_NAME |  |  |
-| DB_TYPE |  | mysql |
-| DB_USER |  | eccube2 |
-| DB_PASSWORD |  | password |
-| DB_SERVER |  | mysql |
-| DB_NAME |  | eccube2 |
-| DB_PORT |  |  |
-| ADMIN_DIR | admin/ | admin/ |
-| ADMIN_FORCE_SSL | false | false |
-| ADMIN_ALLOW_HOSTS | a:0:{} | a:0:{} |
-| AUTH_MAGIC |  |  |
-| PASSWORD_HASH_ALGOS | sha256 | sha256 |
-| MAIL_BACKEND | smtp | smtp |
-| SMTP_HOST |  |  |
-| SMTP_PORT |  |  |
-| SMTP_USER |  |  |
-| SMTP_PASSWORD |  |  |
+| 設定値 | 必須 | デフォルト | Dockerデフォルト |
+| --- | --- | --- | --- |
+| HTTP_URL | * |  | http://localhost:8080/ |
+| HTTPS_URL | * |  | http://localhost:8080/ |
+| ROOT_URLPATH | * | / | / |
+| DOMAIN_NAME |  |  |  |
+| DB_TYPE | * |  | mysql |
+| DB_USER | * |  | eccube2 |
+| DB_PASSWORD |  |  | password |
+| DB_SERVER | * |  | mysql |
+| DB_NAME | * |  | eccube2 |
+| DB_PORT |  |  |  |
+| ADMIN_DIR | * | admin/ | admin/ |
+| ADMIN_FORCE_SSL | * | false | false |
+| ADMIN_ALLOW_HOSTS | * | a:0:{} | a:0:{} |
+| AUTH_MAGIC | * |  |  |
+| PASSWORD_HASH_ALGOS | * | sha256 | sha256 |
+| MAIL_BACKEND | * | smtp | smtp |
+| SMTP_HOST |  |  |  |
+| SMTP_PORT |  |  |  |
+| SMTP_USER |  |  |  |
+| SMTP_PASSWORD |  |  |  |
 
 .env.dist から .env は簡単に作成できます。  
 Docker経由の場合は docker-compose.yml で設定してください。
+
+新規インストールの際に使用する `AUTH_MAGIC` の値を以下のコマンドで生成することができます。
+
+```
+./vendor/bin/eccube util:random-string
+```
+
 
 ### 3. インストール
 
@@ -190,6 +197,7 @@ http://localhost:8080/ から EC-CUBE2にアクセスできます。
 - vendor
     - eccube2
         - eccube2 : EC-CUBE 本体
+    - ...
 
 
 ## 既知の問題

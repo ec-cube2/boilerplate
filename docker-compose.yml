@@ -39,7 +39,7 @@ services:
       ADMIN_DIR: admin/
       ADMIN_FORCE_SSL: 'false'
       ADMIN_ALLOW_HOSTS: 'a:0:{}'
-      AUTH_MAGIC: 
+      AUTH_MAGIC: ~
       PASSWORD_HASH_ALGOS: sha256
       MAIL_BACKEND: smtp
       SMTP_HOST: ~
