@@ -94,6 +94,14 @@ docker-compose exec app bash
 ./vendor/bin/eccube install
 ```
 
+以下は郵便番号ダウンロードのURLが変更になったため、実行しましょう。
+
+```
+./vendor/bin/eccube parameter:set ZIP_DOWNLOAD_URL '"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"' 
+```
+
+Boilerplate用の設定も以下で設定できます。
+
 ```
 ./vendor/bin/eccube parameter:set MODULE_DIR '"module/"' 
 ./vendor/bin/eccube parameter:set MODULE_REALDIR 'ROOT_REALDIR . MODULE_DIR' 
@@ -208,3 +216,4 @@ http://localhost:8080/ から EC-CUBE2にアクセスできます。
     - バックアップ
     - ログ
 - phpinfo が EC-CUBE2 管理画面から確認可能なため、上記設定が確認可能です。
+- パーミッション関係の処理
