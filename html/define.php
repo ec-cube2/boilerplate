@@ -5,9 +5,6 @@ require_once __DIR__.'/../vendor/autoload.php';
 // ROOT_REALDIR の指定
 define('ROOT_REALDIR', realpath(__DIR__ . '/../') . '/');
 
-// HTML_REALDIR の指定
-define('HTML_REALDIR', __DIR__ . '/');
-
 /** HTMLディレクトリからのDATAディレクトリの相対パス */
 define('HTML2DATA_DIR', '../vendor/ec-cube2/ec-cube2/data/');
 
