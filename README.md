@@ -33,7 +33,7 @@ Dockerで実行するには以下を実行してください。
 ```sh
 mkdir PROJECT_NAME
 cd PROJECT_NAME
-docker run --rm -it --volume=".:/var/www/app" composer create-project ec-cube2/boilerplate .
+docker run --rm -it --volume="$PWD:/var/www/app" eccube2/php:5.6-fpm composer create-project ec-cube2/boilerplate .
 ```
 
 
