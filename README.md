@@ -194,6 +194,7 @@ http://localhost:8080/ から EC-CUBE2にアクセスできます。
     - cache
         - smarty : テンプレートキャッシュ
         - master : マスタキャッシュ
+    - download : ダウンロード販売ファイル
     - temp : 一時ファイル
         - plugin_install
         - plugin_update
