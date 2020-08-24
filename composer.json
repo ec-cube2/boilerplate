@@ -28,6 +28,7 @@
             "mv ./html/define.php ./",
             "cp -R ./vendor/ec-cube2/ec-cube2/html ./",
             "rm -r ./html/install",
+            "rm -r ./html/test",
             "mv ./define.php html/",
             "cp ./vendor/ec-cube2/ec-cube2/data/downloads/KEN_ALL.CSV ./var/zip/",
             "mv ./.gitignore.dist ./.gitignore"
