@@ -3,7 +3,7 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "ec-cube2/cli": "^1.2",
+        "ec-cube2/cli": "^1.2.8",
         "ec-cube2/ec-cube2": "~2.13.5",
         "oscarotero/env": "^1.2",
         "vlucas/phpdotenv": "^2.0.1"
@@ -31,7 +31,11 @@
             "rm -r ./html/test",
             "mv ./define.php html/",
             "cp ./vendor/ec-cube2/ec-cube2/data/downloads/KEN_ALL.CSV ./var/zip/",
-            "mv ./.gitignore.dist ./.gitignore"
+            "mv ./.gitignore.dist ./.gitignore",
+            "rm -r ./.github"
         ]
+    },
+    "require-dev": {
+        "php5friends/phpunit48": "^4.8"
     }
 }

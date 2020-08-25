@@ -189,6 +189,7 @@ http://localhost:8080/ から EC-CUBE2にアクセスできます。
     - sphone
     - mobile
     - ...
+- tests : PHPUnit tests
 - html : Webルート
 - var
     - cache
