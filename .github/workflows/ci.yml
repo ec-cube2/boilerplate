@@ -53,3 +53,5 @@ jobs:
           docker-compose exec -T app ./vendor/bin/eccube parameter:set DOWN_SAVE_REALDIR 'ROOT_REALDIR . "var/download/"'
       - name: Run PHPUnit
         run: docker-compose exec -T app ./vendor/bin/phpunit
+      - name: Stops docker-compose stack
+        run: docker-compose down
