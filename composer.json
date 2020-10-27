@@ -3,7 +3,7 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "ec-cube2/cli": "^1.2.8",
+        "ec-cube2/cli": "^1.3.0",
         "ec-cube2/ec-cube2": "~2.13.5",
         "oscarotero/env": "^1.2",
         "vlucas/phpdotenv": "^2.0.1"
