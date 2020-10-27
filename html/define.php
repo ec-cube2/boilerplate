@@ -37,6 +37,9 @@ define('BACKUP_REALDIR', ROOT_REALDIR . "var/backup/");
 // MDB2_PORTABILITY_FIX_CASE
 define('MDB2_PORTABILITY_FIX_CASE', 0);
 
+// MASTER_DATA_REALDIR 指定
+define('MASTER_DATA_REALDIR', ROOT_REALDIR . "var/cache/master/");
+
 
 // Zip
 /** 郵便番号CSV ファイルのパス */

@@ -25,8 +25,6 @@ jobs:
           cp ./vendor/ec-cube2/ec-cube2/data/downloads/KEN_ALL.CSV ./var/zip/
       - name: Install EC-CUBE2
         run: docker-compose exec -T app ./vendor/bin/eccube install --yes --no-send-info "TEST店" "info@example.com"
-      - name: Fix EC-CUBE2 parameter
-        run: docker-compose exec -T app ./vendor/bin/eccube composer-fix
       - name: Run PHPUnit
         run: docker-compose exec -T app ./vendor/bin/phpunit
       - name: Stops docker-compose stack
