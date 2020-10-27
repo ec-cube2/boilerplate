@@ -94,43 +94,19 @@ docker-compose exec app bash
 ./vendor/bin/eccube install
 ```
 
-以下は郵便番号ダウンロードのURLが変更になったため、実行しましょう。
+インストール後、Composerでのインストールの設定の修正などを行うため、以下のコマンドを実行してください。
 
 ```
-./vendor/bin/eccube parameter:set ZIP_DOWNLOAD_URL '"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"' 
+./vendor/bin/eccube composer-fix
 ```
 
-Boilerplate用の設定も以下で設定できます。
+[ComposerFix](https://github.com/ec-cube2-plugin/composer_fix) プラグインにより以下の問題を修正します。
 
-```
-./vendor/bin/eccube parameter:set MODULE_DIR '"module/"' 
-./vendor/bin/eccube parameter:set MODULE_REALDIR 'ROOT_REALDIR . MODULE_DIR' 
-./vendor/bin/eccube parameter:set MASTER_DATA_REALDIR 'ROOT_REALDIR . "var/cache/master/"' 
-./vendor/bin/eccube parameter:set PLUGIN_UPLOAD_REALDIR 'ROOT_REALDIR . "plugin/"' 
-./vendor/bin/eccube parameter:set DOWNLOADS_TEMP_PLUGIN_UPDATE_DIR 'ROOT_REALDIR . "var/temp/plugin_update/"' 
-./vendor/bin/eccube parameter:set DOWNLOADS_TEMP_PLUGIN_INSTALL_DIR 'ROOT_REALDIR . "var/temp/plugin_install/"' 
-./vendor/bin/eccube parameter:set LOG_REALFILE 'LOG_REALDIR . "site.log"' 
-./vendor/bin/eccube parameter:set CUSTOMER_LOG_REALFILE 'LOG_REALDIR . "customer.log"' 
-./vendor/bin/eccube parameter:set ADMIN_LOG_REALFILE 'LOG_REALDIR . "admin.log"' 
-./vendor/bin/eccube parameter:set ERROR_LOG_REALFILE 'LOG_REALDIR . "error.log"' 
-./vendor/bin/eccube parameter:set DB_LOG_REALFILE 'LOG_REALDIR . "db.log"' 
-./vendor/bin/eccube parameter:set PLUGIN_LOG_REALFILE 'LOG_REALDIR . "plugin.log"' 
-./vendor/bin/eccube parameter:set OSTORE_LOG_REALFILE 'LOG_REALDIR . "ownersstore.log"' 
-./vendor/bin/eccube parameter:set CSV_TEMP_REALDIR 'ROOT_REALDIR . "temp/csv/"' 
-./vendor/bin/eccube parameter:set SMARTY_TEMPLATES_REALDIR 'ROOT_REALDIR . "templates/"' 
-./vendor/bin/eccube parameter:set COMPILE_REALDIR 'ROOT_REALDIR . "var/cache/smarty/" . TEMPLATE_NAME . "/"' 
-./vendor/bin/eccube parameter:set COMPILE_ADMIN_REALDIR 'ROOT_REALDIR . "var/cache/smarty/admin/"' 
-./vendor/bin/eccube parameter:set MOBILE_COMPILE_REALDIR 'ROOT_REALDIR . "var/cache/smarty/" . MOBILE_TEMPLATE_NAME . "/"' 
-./vendor/bin/eccube parameter:set SMARTPHONE_COMPILE_REALDIR 'ROOT_REALDIR . "var/cache/smarty/" . SMARTPHONE_TEMPLATE_NAME . "/"' 
-./vendor/bin/eccube parameter:set DOWN_TEMP_REALDIR 'ROOT_REALDIR . "var/temp/download/"' 
-./vendor/bin/eccube parameter:set DOWN_SAVE_REALDIR 'ROOT_REALDIR . "var/download/"' 
-```
+- 一部 EC-CUBE2 にハードコーディングされたディレクトリが存在するため、上記ディレクトリ構成が有効にならない場合があります。
+    - バックアップ
+    - 郵便番号アップーデート
+- phpinfo が EC-CUBE2 管理画面から確認可能なため、上記設定が確認可能です。
 
-キャッシュもクリアします。
-
-```
-./vendor/bin/eccube cache:clear
-```
 
 ### 4. 初期ユーザーの作成
 
@@ -208,14 +184,3 @@ http://localhost:8080/ から EC-CUBE2にアクセスできます。
     - eccube2
         - eccube2 : EC-CUBE 本体
     - ...
-
-
-## 既知の問題
-
-以下の問題は追加プラグインにて改善予定です。
-
-- 一部 EC-CUBE2 にハードコーディングされたディレクトリが存在するため、上記ディレクトリ構成が有効にならない場合があります。
-    - バックアップ
-    - ログ
-- phpinfo が EC-CUBE2 管理画面から確認可能なため、上記設定が確認可能です。
-- パーミッション関係の処理

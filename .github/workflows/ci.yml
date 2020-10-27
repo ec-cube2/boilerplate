@@ -26,31 +26,7 @@ jobs:
       - name: Install EC-CUBE2
         run: docker-compose exec -T app ./vendor/bin/eccube install --yes --no-send-info "TEST店" "info@example.com"
       - name: Fix EC-CUBE2 parameter
-        run: |
-          # Fix URL
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set ZIP_DOWNLOAD_URL '"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"'
-          # Composer install fix
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set MODULE_DIR '"module/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set MODULE_REALDIR 'ROOT_REALDIR . MODULE_DIR'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set MASTER_DATA_REALDIR 'ROOT_REALDIR . "var/cache/master/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set PLUGIN_UPLOAD_REALDIR 'ROOT_REALDIR . "plugin/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set DOWNLOADS_TEMP_PLUGIN_UPDATE_DIR 'ROOT_REALDIR . "var/temp/plugin_update/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set DOWNLOADS_TEMP_PLUGIN_INSTALL_DIR 'ROOT_REALDIR . "var/temp/plugin_install/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set LOG_REALFILE 'LOG_REALDIR . "site.log"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set CUSTOMER_LOG_REALFILE 'LOG_REALDIR . "customer.log"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set ADMIN_LOG_REALFILE 'LOG_REALDIR . "admin.log"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set ERROR_LOG_REALFILE 'LOG_REALDIR . "error.log"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set DB_LOG_REALFILE 'LOG_REALDIR . "db.log"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set PLUGIN_LOG_REALFILE 'LOG_REALDIR . "plugin.log"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set OSTORE_LOG_REALFILE 'LOG_REALDIR . "ownersstore.log"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set CSV_TEMP_REALDIR 'ROOT_REALDIR . "temp/csv/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set SMARTY_TEMPLATES_REALDIR 'ROOT_REALDIR . "templates/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set COMPILE_REALDIR 'ROOT_REALDIR . "var/cache/smarty/" . TEMPLATE_NAME . "/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set COMPILE_ADMIN_REALDIR 'ROOT_REALDIR . "var/cache/smarty/admin/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set MOBILE_COMPILE_REALDIR 'ROOT_REALDIR . "var/cache/smarty/" . MOBILE_TEMPLATE_NAME . "/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set SMARTPHONE_COMPILE_REALDIR 'ROOT_REALDIR . "var/cache/smarty/" . SMARTPHONE_TEMPLATE_NAME . "/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set DOWN_TEMP_REALDIR 'ROOT_REALDIR . "var/temp/download/"'
-          docker-compose exec -T app ./vendor/bin/eccube parameter:set DOWN_SAVE_REALDIR 'ROOT_REALDIR . "var/download/"'
+        run: docker-compose exec -T app ./vendor/bin/eccube composer-fix
       - name: Run PHPUnit
         run: docker-compose exec -T app ./vendor/bin/phpunit
       - name: Stops docker-compose stack
