@@ -2,6 +2,11 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+// https
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
+
 // ROOT_REALDIR の指定
 define('ROOT_REALDIR', realpath(__DIR__ . '/../') . '/');
 
