@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
-
 // https
 if ($_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
     $_SERVER['HTTPS'] = 'on';
@@ -67,3 +65,7 @@ define('USE_FILENAME_DIR_INDEX', null);
 while (ob_get_level() > 0 && ob_get_level() > 0) {
     ob_end_clean();
 }
+
+
+// autoload
+require_once __DIR__.'/../vendor/autoload.php';
