@@ -3,7 +3,7 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "ec-cube2-plugin/composer_fix": "^1.1",
+        "ec-cube2-plugin/fix-composer": "^2.0",
         "ec-cube2/cli": "^1.4",
         "ec-cube2/ec-cube2": "~2.13.5",
         "oscarotero/env": "^1.2",

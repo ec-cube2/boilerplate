@@ -94,7 +94,7 @@ docker-compose exec app bash
 ./vendor/bin/eccube install
 ```
 
-インストール時に [ComposerFix](https://github.com/ec-cube2-plugin/composer_fix) プラグインにより以下の問題を修正します。
+インストール時に [FixComposer](https://github.com/ec-cube2-plugin/fix-composer) プラグインにより以下の問題を修正します。
 
 - 一部 EC-CUBE2 にハードコーディングされたディレクトリが存在するため、上記ディレクトリ構成が有効にならない場合があります。
     - バックアップ
@@ -104,9 +104,9 @@ docker-compose exec app bash
 もし、既存の環境から移行する場合には、以下のコマンドを実行してください。
 
 ```
-./vendor/bin/eccube composer-fix
-./vendor/bin/eccube plugin:install ComposerFix
-./vendor/bin/eccube plugin:enable ComposerFix
+./vendor/bin/eccube fix-composer
+./vendor/bin/eccube plugin:install FixComposer
+./vendor/bin/eccube plugin:enable FixComposer
 ```
 
 ### 4. 初期ユーザーの作成
